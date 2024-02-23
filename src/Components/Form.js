@@ -40,7 +40,7 @@ function Form(props) {
         }}
       >
         <div className="mb-3">
-          <h1 htmlFor="textarea" className="fs-3">
+          <h1 htmlFor="textarea" className="mb-4 fs-2 ">
             {props.title}
           </h1>
           <textarea
@@ -50,25 +50,45 @@ function Form(props) {
             value={text}
             onChange={handleChange}
             style={{
-              backgroundColor: props.mode === "dark" ? "grey" : "white",
+              backgroundColor: props.mode === "dark" ? "#212529" : "white",
               color: props.mode === "dark" ? "white" : "black",
             }}
           ></textarea>
         </div>
         <div className="d-flex flex-sm-row flex-column gap-2">
-          <button className="btn btn-danger mx-1" onClick={handleUpClick}>
+          <button
+            disabled={text.length === 0}
+            className="btn btn-danger mx-1"
+            onClick={handleUpClick}
+          >
             Convert To UpperCase
           </button>
-          <button className="btn btn-danger mx-1" onClick={handleLoClick}>
+          <button
+            disabled={text.length === 0}
+            className="btn btn-danger mx-1"
+            onClick={handleLoClick}
+          >
             Convert To LowerCase
           </button>
-          <button className="btn btn-danger mx-1" onClick={handleClrClick}>
+          <button
+            disabled={text.length === 0}
+            className="btn btn-danger mx-1"
+            onClick={handleClrClick}
+          >
             Clear Text
           </button>
-          <button className="btn btn-danger mx-1" onClick={handleCopClick}>
+          <button
+            disabled={text.length === 0}
+            className="btn btn-danger mx-1"
+            onClick={handleCopClick}
+          >
             Copy Text
           </button>
-          <button className="btn btn-danger mx-1" onClick={handleExtSpaces}>
+          <button
+            disabled={text.length === 0}
+            className="btn btn-danger mx-1"
+            onClick={handleExtSpaces}
+          >
             Remove Extra Spaces
           </button>
         </div>
@@ -81,11 +101,16 @@ function Form(props) {
       >
         <h2>Your Text Summary</h2>
         <p>
-          {text.split(" ").length} Words and {text.length} characters
+          {
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          Words and {text.length} characters
         </p>
         <p>{0.008 * text.split("").length} Minutes To Read It</p>
         <h2>Preview</h2>
-        <p>{text.length > 0 ? text : "Enter text above to preview it here"}</p>
+        <p>{text.length > 0 ? text : "Nothing To Preview!"}</p>
       </div>
     </>
   );

@@ -34,12 +34,12 @@ function App() {
       <Alerts alert={alert} />
       <div>
         <Routes>
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<About mode={mode} />} />
           <Route
             path="/"
             element={
               <Form
-                title="Example Text Area"
+                title="TextUtils - Word Counter, Character Counter, Remove extra spaces"
                 mode={mode}
                 showAlert={showAlert}
               />

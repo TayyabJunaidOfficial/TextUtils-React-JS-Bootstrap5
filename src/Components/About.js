@@ -1,31 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 
-function About() {
-  const [myStyle, setMyStyle] = useState({
-    color: "white",
-    backgroundColor: "black",
-  });
+function About(props) {
+  // const [myStyle, setMyStyle] = useState({
+  //   color: "white",
+  //   backgroundColor: "black",
+  // });
 
-  const [btntext, setBtntext] = useState("Enable Light Mode");
-  const toggleStyle = () => {
-    if (myStyle.color === "white") {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white",
-        border: "2px solid red",
-      });
-      setBtntext("Enable Dark Mode");
-    } else {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black",
-        border: "2px solid red",
-      });
-      setBtntext("Enable Light Mode");
-    }
+  let myStyle = {
+    color: props.mode === "dark" ? "white" : "#212529",
+    backgroundColor: props.mode === "dark" ? "#212529" : "white",
+    border: "1px solid",
+    borderColor: props.mode === "dark" ? "white" : "#212529",
   };
   return (
-    <div className="container" style={myStyle}>
+    <div
+      className="container"
+      style={{ color: props.mode === "dark" ? "white" : "#212529" }}
+    >
       <h1 className="my-2">About Us</h1>
       <div className="accordion accordion-flush" id="accordionFlushExample">
         <div className="accordion-item" style={myStyle}>
@@ -39,7 +30,7 @@ function About() {
               aria-controls="flush-collapseOne"
               style={myStyle}
             >
-              Accordion Item #1
+              <strong>Analyze Your Text</strong>
             </button>
           </h2>
           <div
@@ -49,9 +40,8 @@ function About() {
             data-bs-parent="#accordionFlushExample"
           >
             <div className="accordion-body">
-              Placeholder content for this accordion, which is intended to
-              demonstrate the <code>.accordion-flush</code> className. This is
-              the first item's accordion body.
+              Text-Utils gives you a way to anlyze your text Quickly and
+              efficiently. Be it word count, characters or not
             </div>
           </div>
         </div>
@@ -66,7 +56,7 @@ function About() {
               aria-controls="flush-collapseTwo"
               style={myStyle}
             >
-              Accordion Item #2
+              <strong>Free To Use</strong>
             </button>
           </h2>
           <div
@@ -76,10 +66,8 @@ function About() {
             data-bs-parent="#accordionFlushExample"
           >
             <div className="accordion-body">
-              Placeholder content for this accordion, which is intended to
-              demonstrate the <code>.accordion-flush</code> className. This is
-              the second item's accordion body. Let's imagine this being filled
-              with some actual content.
+              TextUtils is a free character counter tool that provides instant
+              character count and word count statistics for a given text
             </div>
           </div>
         </div>
@@ -94,7 +82,7 @@ function About() {
               aria-controls="flush-collapseThree"
               style={myStyle}
             >
-              Accordion Item #3
+              <strong>Browser Compatible</strong>
             </button>
           </h2>
           <div
@@ -104,20 +92,13 @@ function About() {
             data-bs-parent="#accordionFlushExample"
           >
             <div className="accordion-body">
-              Placeholder content for this accordion, which is intended to
-              demonstrate the <code>.accordion-flush</code> className. This is
-              the third item's accordion body. Nothing more exciting happening
-              here in terms of content, but just filling up the space to make it
-              look, at least at first glance, a bit more representative of how
-              this would look in a real-world application.
+              This word counter software works in any web browsers such as
+              Chrome , Firefox, Internet Explorer, Safari, Opera. It suits to
+              count characters in facebook, blog, books, excel document, pdf
+              document, essays, etc
             </div>
           </div>
         </div>
-      </div>
-      <div className="container my-3">
-        <button type="button" class="btn btn-warning" onClick={toggleStyle}>
-          {btntext}
-        </button>
       </div>
     </div>
   );
