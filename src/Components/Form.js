@@ -18,9 +18,7 @@ function Form(props) {
     props.showAlert(" Cleared Text", "Success");
   };
   const handleCopClick = () => {
-    var text = document.getElementById("textarea", "Success");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
     props.showAlert(" Copied To Clipboard", "Success");
   };
   const handleExtSpaces = () => {
@@ -102,7 +100,7 @@ function Form(props) {
         <h2>Your Text Summary</h2>
         <p>
           {
-            text.split(" ").filter((element) => {
+            text.split(/\s+/).filter((element) => {
               return element.length !== 0;
             }).length
           }{" "}
